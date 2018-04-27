@@ -149,7 +149,7 @@ course.getCourseByCampus("Lygten 37", (err, course) => {
 // });
 // uniClass.addUniClass(si);
 
-uniClass.getUniClassRoom("A555", (err, uniClass) => {
+uniClass.getUniByClassRoom("A555", (err, uniClass) => {
   if(err) throw err;
   console.log("Class: " + uniClass);
 } );
