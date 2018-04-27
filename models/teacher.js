@@ -3,8 +3,8 @@ const bcrypt = require('bcryptjs');
 const config = require('../config/database');
 
 // Teacher Schema
-const teacherSchema = mongoose.Schema({
-  Teachername: {
+const TeacherSchema = mongoose.Schema({
+  name: {
     type: String,
     required: true
   },
@@ -15,6 +15,14 @@ const teacherSchema = mongoose.Schema({
   password: {
     type: String,
     required: true
+  },
+  phonenumber: {
+    type: String,
+    required: false
+  },
+  keaMail: {
+    type: String,
+    required: false
   }
 });
 
@@ -25,8 +33,8 @@ getTeacherById = (id, callback) => {
   Teacher.findById(id, callback);
 }
 
-module.exports.getTeacherByTeachername = (Teachername, callback) => {
-  const query = {Teachername: Teachername};
+module.exports.getTeacherByName = (name, callback) => {
+  const query = {name: name};
   Teacher.findOne(query, callback);
 }
 
@@ -45,8 +53,8 @@ module.exports.addTeacher = function(newTeacher, callback) {
   });
 }
 
-module.exports.deleteTeacherByTeachername = (Teachername, callback) =>  {
-  const query = {Teachername: Teachername};
+module.exports.deleteTeacherByName = (name, callback) =>  {
+  const query = {name: name};
   Teacher.remove(query, callback);
 }
 

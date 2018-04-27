@@ -4,7 +4,7 @@ const config = require('../config/database');
 
 // Student Schema
 const StudentSchema = mongoose.Schema({
-  Studentname: {
+  name: {
     type: String,
     required: true
   },
@@ -13,6 +13,22 @@ const StudentSchema = mongoose.Schema({
     required: true
   },
   password: {
+    type: String,
+    required: true
+  },
+  phonenumber: {
+    type: String,
+    required: false
+  },
+  keaMail: {
+    type: String,
+    required: false
+  },
+  course: {
+    type: String,
+    required: true
+  },
+  group: {
     type: String,
     required: true
   }
@@ -25,8 +41,8 @@ getStudentById = (id, callback) => {
   Student.findById(id, callback);
 }
 
-module.exports.getStudentByStudentname = (Studentname, callback) => {
-  const query = {Studentname: Studentname};
+module.exports.getStudentByName = (name, callback) => {
+  const query = {name: name};
   Student.findOne(query, callback);
 }
 
@@ -45,8 +61,8 @@ module.exports.addStudent = function(newStudent, callback) {
   });
 }
 
-module.exports.deleteStudentByStudentname = (Studentname, callback) =>  {
-  const query = {Studentname: Studentname};
+module.exports.deleteStudentByName = (name, callback) =>  {
+  const query = {name: name};
   Student.remove(query, callback);
 }
 

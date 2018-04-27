@@ -1,0 +1,6 @@
+I would like to lookup attendance for a student for a specific subject
+I would like to have how many courses a teacher is having this semester
+I would like to easily modify my classes and schedule
+I would like to write down changes that are made to the schedule 
+I would like to lookup how many and what changes have been made to schedule by a teacher
+I would like to get average attendace for a class for a semester
