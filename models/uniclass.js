@@ -57,7 +57,7 @@ module.exports.getUniClassByDateAndRoom = (date, room, callback) => {
   UniClass.findOne(query, callback);
 }
 
-module.exports.getUniClassRoom = (room, callback) => {
+module.exports.getUniByClassRoom = (room, callback) => {
   const query = {room: room};
   UniClass
   .findOne(query, callback)
