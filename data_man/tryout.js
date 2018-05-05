@@ -1,49 +1,55 @@
-var express  = require('express');
-var app      = express();
-var port     = process.env.PORT || 8080;
-var mongoose = require('mongoose');
-var passport = require('passport');
-var flash    = require('connect-flash');
+//const express = require('express');
+const mongoose = require('mongoose');
+//const path = require('path');
+//const bodyParser = require('body-parser');
+const cors = require('cors');
+const config = require('../config/database');
+const Lecture = require('../models/lectures');
+const Schema = mongoose.Schema;
 
-var morgan       = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser   = require('body-parser');
-var session      = require('express-session');
-var Module = require('./app/models/module');
 
-var configDB = require('./config/database.js');
 
-mongoose.connect(configDB.url, {useMongoClient: true}); // connect to our database
+mongoose.connect(config.database); // connect to our database
 mongoose.connection.on('connected',()=>{
     console.log('Connecected to mongoDB')
 })
 mongoose.Promise = global.Promise;
 
-newModule = new Module();
-newModule.findByStudent('1234',(err,result)=>{
-    if(err)console.log(err);
-    else console.log(result);
-})
-
-/* Module.find({'students.id':{$eq:'1234'}},(err, result)=>{
+/* newLecture = new Lecture();
+newLecture.findByStudent('5ae3217b099468229c6081e8',(err,result)=>{
     if(err)console.log(err);
     else console.log(result);
 }) */
 
-/* var newModule = new Module();
-newModule.courseName = "System Integration";
-var date = new Date("2018-05-10");
-date.setDate(date.getDate()+14);
+ Lecture.find({'students.student':{$eq:'5ae3217b099468229c6081e8'}},(err, result)=>{
+    if(err)console.log(err);
+    else console.log(result.toString());
+}).populate('students');
 
-newModule.date = date;
+/* var newLecture = new Lecture();
+newLecture.courseName = "Development of the large systems";
+var date = new Date("2018-05-9");
+date.setDate(date.getDate()+35);
 
-newModule.pin = "1234"
-newModule.pin_start = new Date();
-newModule.students = [{id:"1234",present:true},
-{id:"1234",present:true},
-{id:"2345",present:false},
-{id:"3456",present:false},]
-newModule.addModule(newModule,(err,module)=>{
+newLecture.date = date;
+
+newLecture.pin = "1234"
+newLecture.pin_start = new Date();
+newLecture.students = [{student:"5ae3217b099468229c6081e7",present:false},
+{student:"5ae3217b099468229c6081e8",present:false},
+{student:"5ae3217b099468229c6081e9",present:false},
+{student:"5ae3217b099468229c6081e9",present:false},
+{student:"5ae3217b099468229c6081ec",present:false},
+{student:"5ae3217b099468229c6081ed",present:false},
+{student:"5ae3217b099468229c6081ee",present:false},
+{student:"5ae3217b099468229c6081ef",present:false},
+{student:"5ae3217b099468229c6081f0",present:false},
+{student:"5ae3217b099468229c6081f1",present:false},
+{student:"5ae3217b099468229c6081f2",present:false},
+{student:"5ae3217b099468229c6081f3",present:false},
+{student:"5ae3217b099468229c6081f4",present:false},
+{student:"5ae3217b099468229c6081f5",present:false}];
+newLecture.addLecture(newLecture,(err,lecture)=>{
     if(err)console.log(err);
     else console.log('success');
 }) */
