@@ -5,10 +5,6 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const config = require('./config/database');
-const student = require('./models/student');
-const course = require('./models/course');
-const teacher = require('./models/teacher');
-const uniClass = require('./models/uniclass');
 
 // DATABASE CONNECTION
 
@@ -37,73 +33,17 @@ app.use(cors());
 //Body Parser Middleware
 app.use(bodyParser.json());
 
-// DB test
-// Create objects
-let ogyun = new student({
-  name : "Ogyun Dzambazov",
-  email: "ogyun@gmail.dk",
-  password: "ogyun",
-  phonenumber: "+4540404040",
-  keaMail: "ogyudza@kea.dk",
-  course: "Computer Science",
-  group: "SoftwareTeam11"
-});
-
-let igor = new student({
-  name : "Igor Akulinin",
-  email: "igor@gmail.dk",
-  password: "igor",
-  phonenumber: "+4540505050",
-  keaMail: "igaku@kea.dk",
-  course: "Computer Science",
-  group: "SoftwareTeam11"
-});
-
-let softDev = new course({
-  name : "Software Development",
-  campus: "Lygten 37",
-  length: 3
-});
-
-let webDev = new course({
-  name : "Web Development",
-  campus: "Lygten 16",
-  length: 3
-});
-
-let dora = new teacher({
-  name : "Dora Dimitrova",
-  email: "dora@gmail.dk",
-  password: "dora",
-  phonenumber: "+4540122112",
-  keaMail: "dodi@kea.dk"
-});
-
-let andrea = new teacher({
-  name : "Andrea Corradini",
-  email: "andrea@gmail.dk",
-  password: "andrea",
-  phonenumber: "+4540233223",
-  keaMail: "anco@kea.dk"
-});
-
-// Add objects to db
-// student.addStudent(ogyun);
-// student.addStudent(igor);
-// course.addCourse(softDev);
-// course.addCourse(webDev);
-// teacher.addTeacher(dora);
-// teacher.addTeacher(andrea);
-// uniClass.addUniClass(si);
+// Routes
 
 // Set port number
 const port = process.env.PORT || 3000;
+
 // Start server
 app.listen(port, () => {
   console.log('Server startet on port ' + port);
 });
 
-//Get id's 
+//Get id's
 var ogyid;
 student.getStudentByEmail("igor@gmail.dk", (err, student) => {
   if(err) throw err;
@@ -149,7 +89,7 @@ course.getCourseByCampus("Lygten 37", (err, course) => {
 // });
 // uniClass.addUniClass(si);
 
-uniClass.getUniClassRoom("A555", (err, uniClass) => {
+uniClass.getUniByClassRoom("A555", (err, uniClass) => {
   if(err) throw err;
   console.log("Class: " + uniClass);
 } );
