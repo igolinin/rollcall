@@ -15,16 +15,32 @@ mongoose.connection.on('connected',()=>{
 })
 mongoose.Promise = global.Promise;
 
-/* newLecture = new Lecture();
-newLecture.findByStudent('5ae3217b099468229c6081e8',(err,result)=>{
+newLecture = new Lecture();
+
+Lecture.update({_id:{$eq:'5aedbde5270fe506683620a7'}, 'students.student':{$in:'5ae3217b099468229c6081e8' }},{ $set: { 'students.$.present': 'true' }},(err,result)=>{
+    if(err)console.log(err)
+    else console.log(result)
+});
+
+/* newLecture.findByDate('2018-05-24',(err,result)=>{
+    if(err)console.log(err);
+    else console.log(result);
+})
+ */
+
+/* newLecture.findByStudentAndDate('5ae3217b099468229c6081e7','2018-05-24',(err,result)=>{
+    if(err)console.log(err);
+    else console.log(result);
+}) */
+/* newLecture.findByStudent('5ae3217b099468229c6081e7' ,(err,result)=>{
     if(err)console.log(err);
     else console.log(result);
 }) */
 
- Lecture.find({'students.student':{$eq:'5ae3217b099468229c6081e8'}},(err, result)=>{
+/* Lecture.find({'students.student':{$eq:'5ae3217b099468229c6081e8'},'date':{$eq:'2018-05-24T00:00:00.000Z'}},(err, result)=>{
     if(err)console.log(err);
     else console.log(result.toString());
-}).populate('students');
+}).populate('students'); */ 
 
 /* var newLecture = new Lecture();
 newLecture.courseName = "Development of the large systems";

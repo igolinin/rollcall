@@ -17,8 +17,15 @@ LectureSchema.methods.addLecture = function(newLecture, callback){
 
 };
 LectureSchema.methods.findByStudent = function(id, callback){
-    Lecture.find({'students.student':{$eq:id}},callback)
+    Lecture.find({'students.student':{$eq:id}},callback).populate('students');
 };
+LectureSchema.methods.findByStudentAndDate = function(id, date, callback){
+    Lecture.find({'students.student':{$eq:id}, 'date':{$eq:date}},callback);
+};
+LectureSchema.methods.findByDate = function( date, callback){
+    Lecture.find({date:{$eq:date}},callback);
+};
+
 
 var Lecture = mongoose.model('Lecture', LectureSchema);
 module.exports = Lecture;
