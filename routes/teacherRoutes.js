@@ -3,6 +3,8 @@ const router = express.Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
+const Lecture = require('../models/lectures');
+
 
 // Authenticate
 router.post('/teacherAuthenticate', (req, res, next) => {
@@ -41,6 +43,38 @@ router.post('/teacherAuthenticate', (req, res, next) => {
         return res.json({success: false, msg: 'Wrong password'});
       }
     });
+
+router.post('/getpin', (req, res)=>{
+  newLecture = new Lecture();
+  
+  newLecture.genPin('5aedbde5270fe506683620a7', (err,result)=>{
+    
+    if(err)res.json({success:false})
+    else {
+      console.log(result);
+      newLecture.findByID('5aedbde5270fe506683620a7',(err,result1)=>{
+        if(err)console.log(err)
+        else  
+        {let pin=result1.pin;
+          let time=result1.pin_time;
+          console.log(result1);
+          res.json({success:true, pin:pin, time:time});}
+      }) 
+    };
+  });
+});      
+
+router.post('/dayslectures', (req, res)=>{
+  newLecture = new Lecture();
+  newLecture.findByDate('2018-05-9',(err,result)=>{
+    if(err)console.log(err)
+    else{
+      res.json(result);
+    }
+  })
+      
+}) 
+
 
 
 module.exports = router;
