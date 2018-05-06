@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TeacherCourseService } from '../../../services/teacherServices/teacher-course.service'
 
 @Component({
   selector: 'app-teacher-dashboard',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeacherDashboardComponent implements OnInit {
 
-  constructor() { }
+  courses = [];
+
+  startRollcall() {
+    console.log('hello');
+  }
+
+  constructor(
+      private router: Router,
+      private authService:TeacherAuthService
+  ) { }
 
   ngOnInit() {
+    console.log('hej');
   }
 
 }
