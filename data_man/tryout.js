@@ -15,14 +15,22 @@ mongoose.Promise = global.Promise;
 
 newLecture = new Lecture();
 
-var Present = newLecture.findPresense('5aedbde5270fe506683620a7','5ae3217b099468229c6081e9', ()=>{})
-console.log(Present);
-/* newLecture.findPresense('5aedbde5270fe506683620a7','5ae3217b099468229c6081e9', (err,result)=>{
+
+
+newLecture.findPresense('5aedbde5270fe506683620a7','5ae3217b099468229c6081e9', (err,result)=>{
     if(err)console.log(err)
+<<<<<<< HEAD
+    else 
+    console.log(result.students[0].present);
+    
+});
+
+=======
     else
    console.log(result.students[0].present);
 
 }); */
+>>>>>>> 9b679ab7fe2ac30dfb74b43604a267635909d92c
 /* newLecture.genPin('5aedbde5270fe506683620a7',(err,result)=>{
     if(err)console.log(err)
     else console.log(result)}); */

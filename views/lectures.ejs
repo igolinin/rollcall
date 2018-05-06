@@ -24,11 +24,11 @@
                 <h3><span class="fa fa-user"></span> <%= user %></h3>
 
                 
-                <% lectures.forEach(function(lecture){ %>
+                <% lectures.forEach(function(i){ %>
 
                     <div class='jumbotron">
-                       <div><h3><%= lecture.courseName %></h3><%= lecture.date %></div>
-                        <h3><%= lecture.students[0].present %><h3>
+                       <div><h3><%= i.courseName %></h3><%= i.date %></div>
+                        <h3>true<h3>
                     </div>
     
                 <%  }) %>
