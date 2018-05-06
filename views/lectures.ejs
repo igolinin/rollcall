@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+    <title>Node Authentication</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <style>
+        
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="page-header text-center">
+        <h1>Lectures</h1>
+        
+    </div>
+
+    
+
+        <!-- LOCAL INFORMATION -->
+        
+            <div class="well text-center">
+                <h3><span class="fa fa-user"></span> <%= user %></h3>
+
+                
+                <% lectures.forEach(function(i){ %>
+
+                    <div class='jumbotron">
+                       <div><h3><%= i.courseName %></h3><%= i.date %></div>
+                        <h3>true<h3>
+                    </div>
+    
+                <%  }) %>
+    
+               
+
+            </div>
+        
+
+        
+        </div>
+    
+
+    
+
+</div>
+</body>
+</html>

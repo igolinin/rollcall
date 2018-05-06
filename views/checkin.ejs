@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+    <title>Node Authentication</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <style>
+        
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="page-header text-center">
+        <h1><span class="fa fa-anchor"></span>Check-in Page</h1>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+    
+
+        <!-- LOCAL INFORMATION -->
+        
+            <div class="well text-center">
+                <h3><span class="fa fa-user"></span> <%= user %></h3>
+
+                
+                    <p>
+                        Hello :
+                        
+                        Please checkin for <b>course name</b> at <%= time %>
+                        <br>You have 20  min left to check in <br>
+
+                    </p>
+                     <form action="/checkin" method="post">
+                        <div class="form-group">
+                            <label>PIN</label>
+                            <input type="text" class="form-control" name="PIN">
+                        </div>
+        
+
+                        <button type="submit" class="btn btn-default btn-lg">Checkin</button>
+                    </form>
+                    <form action="/error" method="post">
+                        <div class="form-group">
+                            <label>OR</label>
+                            <input type="text" class="form-control" name="error">
+                        </div>
+        
+
+                        <button type="submit" class="btn btn-danger btn-lg">Submit error</button>
+                    </form>
+                    
+               
+
+            </div>
+        
+
+        
+        </div>
+    
+
+    
+
+</div>
+</body>
+</html>

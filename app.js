@@ -5,11 +5,14 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const config = require('./config/database');
+const teachers = require('./routes/teacherRoutes');
+var index = require('./routes/index');
+const Schema = mongoose.Schema;
 
 // DATABASE CONNECTION
 
 // Promise libary
-mongoose.Promise = require('bluebird');
+mongoose.Promise = global.Promise;
 
 // Connect To Database
 mongoose.connect(config.database);
@@ -34,6 +37,8 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Routes
+app.use('/', index);
+app.use('/teacher', teachers);
 
 // Set port number
 const port = process.env.PORT || 3000;
@@ -44,7 +49,7 @@ app.listen(port, () => {
 });
 
 //Get id's
-var ogyid;
+/* var ogyid;
 student.getStudentByEmail("igor@gmail.dk", (err, student) => {
   if(err) throw err;
   ogyid = student._id
@@ -95,4 +100,4 @@ uniClass.getUniByClassRoom("A555", (err, uniClass) => {
 } );
 // uniClass.deleteUniClassByDateAndRoom(dateToGet, "A222",(err, uniClass) => {
 //   if(err) throw err;
-// } );
+// } ); */
