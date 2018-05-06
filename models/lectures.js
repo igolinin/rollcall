@@ -29,12 +29,17 @@ LectureSchema.methods.findPresense = function(lecture_id, student_id, callback){
     Lecture.findOne({_id:{$eq:lecture_id}, 'students.student':{$in:student_id}}, 'students.$.present', callback);
 
 }
+LectureSchema.methods.findByID=function(lecture_id, callback){
+    Lecture.findOne({_id:{$eq:lecture_id}}, callback);
+}
 LectureSchema.methods.checkIn = function(lecture_id, student_id, callback){
     Lecture.update({_id:{$eq:lecture_id}, 'students.student':{$in:student_id}},{ $set: { 'student.$.present': 'true' }},callback);
 };
 LectureSchema.methods.genPin = function(course_id, callback){
     var pin = Math.floor(Math.random()*(9999-1000+1)+1000);
-    var time =  Date.now();
+    var time =  new Date();
+    time = time.setMinutes(time.getMinutes()+20);
+    console.log(time-Date.now());
     Lecture.update( {_id:{$eq:course_id}},{$set:{pin:pin,  pin_time:time}}, callback);
 
 };

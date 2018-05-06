@@ -7,6 +7,8 @@ const config = require('../config/database');
 const Lecture = require('../models/lectures');
 const Schema = mongoose.Schema;
 
+
+
 mongoose.connect(config.database); // connect to our database
 mongoose.connection.on('connected',()=>{
     console.log('Connecected to mongoDB')
@@ -17,21 +19,14 @@ newLecture = new Lecture();
 
 
 
-newLecture.findPresense('5aedbde5270fe506683620a7','5ae3217b099468229c6081e9', (err,result)=>{
+/* newLecture.findPresense('5aedbde5270fe506683620a7','5ae3217b099468229c6081e9', (err,result)=>{
     if(err)console.log(err)
-<<<<<<< HEAD
-    else 
-    console.log(result.students[0].present);
+    else console.log(result);
+    //return (result.students[0].present);return (result.students[0].present);
     
-});
-
-=======
-    else
-   console.log(result.students[0].present);
-
 }); */
->>>>>>> 9b679ab7fe2ac30dfb74b43604a267635909d92c
-/* newLecture.genPin('5aedbde5270fe506683620a7',(err,result)=>{
+
+/*newLecture.genPin('5aedbde5270fe506683620a7',(err,result)=>{
     if(err)console.log(err)
     else console.log(result)}); */
 /* newLecture.checkIn('5aedbde5270fe506683620a7','5ae3217b099468229c6081e9', (err,result)=>{
@@ -62,9 +57,9 @@ newLecture.findPresense('5aedbde5270fe506683620a7','5ae3217b099468229c6081e9', (
 /* Lecture.find({'students.student':{$eq:'5ae3217b099468229c6081e8'},'date':{$eq:'2018-05-24T00:00:00.000Z'}},(err, result)=>{
     if(err)console.log(err);
     else console.log(result.toString());
-}).populate('students'); */
+}).populate('students'); */ 
 
-/* var newLecture = new Lecture();
+var newLecture = new Lecture();
 newLecture.courseName = "Development of the large systems";
 var date = new Date("2018-05-9");
 date.setDate(date.getDate()+35);
@@ -90,4 +85,4 @@ newLecture.students = [{student:"5ae3217b099468229c6081e7",present:false},
 newLecture.addLecture(newLecture,(err,lecture)=>{
     if(err)console.log(err);
     else console.log('success');
-}) */
+})
