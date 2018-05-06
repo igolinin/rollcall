@@ -5,7 +5,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const config = require('./config/database');
-
+const teachers = require('./routes/teacherRoutes');
 var index = require('./routes/index');
 const Schema = mongoose.Schema;
 
@@ -37,10 +37,11 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Routes
+app.use('/', index);
+app.use('/teacher', teachers);
 
 // Set port number
 const port = process.env.PORT || 3000;
-app.use('/', index);
 
 // Start server
 app.listen(port, () => {
