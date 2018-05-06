@@ -11,11 +11,16 @@ import { TeacherLoginComponent } from './components/teacherComponents/teacher-lo
 import { TeacherDashboardComponent } from './components/teacherComponents/teacher-dashboard/teacher-dashboard.component';
 
 import { TeacherAuthService } from './services/teacherServices/teacher-auth.service'
+import { TeacherCourseService } from './services/teacherServices/teacher-course.service';
+import { TeacherRollcallComponent } from './components/teacherComponents/teacher-rollcall/teacher-rollcall.component';
+
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'teacher/login', component: TeacherLoginComponent},
-  {path: 'teacher/dashboard', component: TeacherDashboardComponent}
+  {path: 'teacher/dashboard', component: TeacherDashboardComponent},
+  {path: 'teacher/rollcall', component: TeacherRollcallComponent}
+
 ]
 
 @NgModule({
@@ -23,7 +28,8 @@ const appRoutes: Routes = [
     AppComponent,
     HomeComponent,
     TeacherLoginComponent,
-    TeacherDashboardComponent
+    TeacherDashboardComponent,
+    TeacherRollcallComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +38,7 @@ const appRoutes: Routes = [
     FlashMessagesModule.forRoot(),
     HttpModule
   ],
-  providers: [TeacherAuthService  ],
+  providers: [TeacherAuthService, TeacherCourseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

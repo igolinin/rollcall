@@ -18,7 +18,7 @@ export class TeacherCourseService {
   }
 
   startNewRollcall() {
-
+    console.log("HELLO!");
   }
 
   loadToken(){
