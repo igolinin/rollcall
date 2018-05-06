@@ -31,7 +31,9 @@ router.get('/lectures'/* , isLoggedIn */, function(req, res) {
     newLecture.findByStudent('5ae3217b099468229c6081e7' ,(err,result)=>{
         if(err)console.log(err);
         else {
+            console.log(result);
             res.render('./lectures.ejs',{
+                
                 lectures: result,
                 user : "user"
             })}
