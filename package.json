@@ -11,6 +11,7 @@
     "bcryptjs": "*",
     "body-parser": "*",
     "cors": "*",
+    "ejs": "^2.6.1",
     "eslint": "^4.19.1",
     "express": "*",
     "mongoose": "*"

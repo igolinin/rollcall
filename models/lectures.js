@@ -25,7 +25,23 @@ LectureSchema.methods.findByStudentAndDate = function(id, date, callback){
 LectureSchema.methods.findByDate = function( date, callback){
     Lecture.find({date:{$eq:date}},callback);
 };
+LectureSchema.methods.findPresense = function(lecture_id, student_id, callback){
+    Lecture.findOne({_id:{$eq:lecture_id}, 'students.student':{$in:student_id}}, {'students.$.present': 1}, (err,result)=>{
+        if(err)console.log(err)
+        else 
+        return result.students[0].present;
+    });
 
+}
+LectureSchema.methods.checkIn = function(lecture_id, student_id, callback){
+    Lecture.update({_id:{$eq:lecture_id}, 'students.student':{$in:student_id}},{ $set: { 'students.$.present': 'true' }},callback);
+};
+LectureSchema.methods.genPin = function(course_id, callback){
+    var pin = Math.floor(Math.random()*(9999-1000+1)+1000);
+    var time =  Date.now();
+    Lecture.update( {_id:{$eq:course_id}},{$set:{pin:pin,  pin_time:time}}, callback);
+
+};
 
 var Lecture = mongoose.model('Lecture', LectureSchema);
 module.exports = Lecture;

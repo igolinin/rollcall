@@ -6,10 +6,13 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const config = require('./config/database');
 
+var index = require('./routes/index');
+const Schema = mongoose.Schema;
+
 // DATABASE CONNECTION
 
 // Promise libary
-mongoose.Promise = require('bluebird');
+mongoose.Promise = global.Promise;
 
 // Connect To Database
 mongoose.connect(config.database);
@@ -37,6 +40,7 @@ app.use(bodyParser.json());
 
 // Set port number
 const port = process.env.PORT || 3000;
+app.use('/', index);
 
 // Start server
 app.listen(port, () => {
@@ -44,7 +48,7 @@ app.listen(port, () => {
 });
 
 //Get id's
-var ogyid;
+/* var ogyid;
 student.getStudentByEmail("igor@gmail.dk", (err, student) => {
   if(err) throw err;
   ogyid = student._id
@@ -95,4 +99,4 @@ uniClass.getUniByClassRoom("A555", (err, uniClass) => {
 } );
 // uniClass.deleteUniClassByDateAndRoom(dateToGet, "A222",(err, uniClass) => {
 //   if(err) throw err;
-// } );
+// } ); */

@@ -17,10 +17,26 @@ mongoose.Promise = global.Promise;
 
 newLecture = new Lecture();
 
-Lecture.update({_id:{$eq:'5aedbde5270fe506683620a7'}, 'students.student':{$in:'5ae3217b099468229c6081e8' }},{ $set: { 'students.$.present': 'true' }},(err,result)=>{
+var Present = newLecture.findPresense('5aedbde5270fe506683620a7','5ae3217b099468229c6081e9', ()=>{})
+console.log(Present);
+/* newLecture.findPresense('5aedbde5270fe506683620a7','5ae3217b099468229c6081e9', (err,result)=>{
+    if(err)console.log(err)
+    else 
+   console.log(result.students[0].present);
+    
+}); */
+/* newLecture.genPin('5aedbde5270fe506683620a7',(err,result)=>{
+    if(err)console.log(err)
+    else console.log(result)}); */
+/* newLecture.checkIn('5aedbde5270fe506683620a7','5ae3217b099468229c6081e9', (err,result)=>{
     if(err)console.log(err)
     else console.log(result)
-});
+}); */
+
+/* Lecture.update({_id:{$eq:'5aedbde5270fe506683620a7'}, 'students.student':{$in:'5ae3217b099468229c6081e8' }},{ $set: { 'students.$.present': 'true' }},(err,result)=>{
+    if(err)console.log(err)
+    else console.log(result)
+}); */
 
 /* newLecture.findByDate('2018-05-24',(err,result)=>{
     if(err)console.log(err);
