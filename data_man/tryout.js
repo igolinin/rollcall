@@ -7,8 +7,6 @@ const config = require('../config/database');
 const Lecture = require('../models/lectures');
 const Schema = mongoose.Schema;
 
-
-
 mongoose.connect(config.database); // connect to our database
 mongoose.connection.on('connected',()=>{
     console.log('Connecected to mongoDB')
@@ -21,9 +19,9 @@ var Present = newLecture.findPresense('5aedbde5270fe506683620a7','5ae3217b099468
 console.log(Present);
 /* newLecture.findPresense('5aedbde5270fe506683620a7','5ae3217b099468229c6081e9', (err,result)=>{
     if(err)console.log(err)
-    else 
+    else
    console.log(result.students[0].present);
-    
+
 }); */
 /* newLecture.genPin('5aedbde5270fe506683620a7',(err,result)=>{
     if(err)console.log(err)
@@ -56,7 +54,7 @@ console.log(Present);
 /* Lecture.find({'students.student':{$eq:'5ae3217b099468229c6081e8'},'date':{$eq:'2018-05-24T00:00:00.000Z'}},(err, result)=>{
     if(err)console.log(err);
     else console.log(result.toString());
-}).populate('students'); */ 
+}).populate('students'); */
 
 /* var newLecture = new Lecture();
 newLecture.courseName = "Development of the large systems";
