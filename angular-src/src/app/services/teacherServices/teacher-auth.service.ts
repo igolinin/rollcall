@@ -24,7 +24,7 @@ export class TeacherAuthService {
     this.authToken = token;
     this.user = user;
   }
-  
+
   loadToken(){
     const token = localStorage.getItem('id_token');
     this.authToken = token;
@@ -32,7 +32,6 @@ export class TeacherAuthService {
 
   loggedIn(){
     return tokenNotExpired('id_token');
-
   }
 
   logout(){

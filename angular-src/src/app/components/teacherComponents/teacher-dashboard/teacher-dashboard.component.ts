@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TeacherCourseService } from '../../../services/teacherServices/teacher-course.service'
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-teacher-dashboard',
@@ -7,9 +9,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeacherDashboardComponent implements OnInit {
 
-  constructor() { }
+  courses = [];
+
+
+
+  startRollcall() {
+    this.router.navigate(['teacher/rollcall']);
+  }
+
+  constructor(
+      private router: Router,
+      private courseService:TeacherCourseService
+  ) { }
 
   ngOnInit() {
+    this.courseService.getTeacherCourses().subscribe(course => {
+      course.forEach(e => {
+
+
+        let newCourse = {
+          name: e.courseName,
+          date: e.date,
+          pin: e.pin
+        };
+
+
+        this.courses.push(newCourse);
+        console.log(course);
+      });
+    });
   }
 
 }
