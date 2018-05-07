@@ -13,10 +13,20 @@ import { TeacherDashboardComponent } from './components/teacherComponents/teache
 import { TeacherAuthService } from './services/teacherServices/teacher-auth.service'
 import { TeacherCourseService } from './services/teacherServices/teacher-course.service';
 import { TeacherRollcallComponent } from './components/teacherComponents/teacher-rollcall/teacher-rollcall.component';
+import { StudentLoginComponent } from './components/studentComponents/student-login/student-login.component';
+import { StudentDashboardComponent } from './components/studentComponents/student-dashboard/student-dashboard.component';
 
 
 const appRoutes: Routes = [
+
+  // home
   {path: '', component: HomeComponent},
+
+  // student routes
+  {path: 'student/login', component: StudentLoginComponent},
+  {path: 'student/dashboard', component: StudentDashboardComponent},
+
+  // teacher routes
   {path: 'teacher/login', component: TeacherLoginComponent},
   {path: 'teacher/dashboard', component: TeacherDashboardComponent},
   {path: 'teacher/rollcall', component: TeacherRollcallComponent}
@@ -30,6 +40,8 @@ const appRoutes: Routes = [
     TeacherLoginComponent,
     TeacherDashboardComponent,
     TeacherRollcallComponent,
+    StudentLoginComponent,
+    StudentDashboardComponent,
 
   ],
   imports: [
