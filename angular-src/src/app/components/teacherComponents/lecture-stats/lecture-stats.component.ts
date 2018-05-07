@@ -1,12 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-lecture-stats',
-  templateUrl: './lecture-stats.component.html',
+  template: `<div class='jumbotron'>
+   <div *ngFot="let student of students">
+   {{student.email}}
+   </div>
+
+  </div>
+  `,
   styleUrls: ['./lecture-stats.component.css']
 })
 export class LectureStatsComponent implements OnInit {
-
+  @Input public lecture;
   constructor() { }
 
   ngOnInit() {

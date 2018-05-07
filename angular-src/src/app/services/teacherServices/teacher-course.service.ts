@@ -5,8 +5,10 @@ import { Http, Headers } from '@angular/http';
 export class TeacherCourseService {
 
   authToken: any;
+  courseInfo: any;
 
   constructor(private http:Http) { }
+
 
   getTeacherCourses() {
     let headers = new Headers();
@@ -17,8 +19,21 @@ export class TeacherCourseService {
       .map(res => res.json());
   }
 
-  startNewRollcall() {
-    console.log("HELLO!");
+  setCourseInfo(courseInfo) {
+    this.courseInfo = courseInfo;
+  }
+
+  getCourseInfo() {
+    return this.courseInfo;
+  }
+
+  generatePin(courseID) {
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:3000/teacher/genpin', {headers: headers})
+    .map(res => res.json());
   }
 
   loadToken(){

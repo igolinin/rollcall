@@ -11,10 +11,11 @@ export class TeacherDashboardComponent implements OnInit {
 
   courses = [];
 
-
-
-  startRollcall() {
-    this.router.navigate(['teacher/rollcall']);
+  startRollcall(courseID) {
+    this.courseService.generatePin(courseID).subscribe(data => {
+      this.courseService.setCourseInfo(data);
+      this.router.navigate(['teacher/rollcall']);
+    });
   }
 
   constructor(
@@ -26,16 +27,16 @@ export class TeacherDashboardComponent implements OnInit {
     this.courseService.getTeacherCourses().subscribe(course => {
       course.forEach(e => {
 
-
+        console.log(e._id);
         let newCourse = {
           name: e.courseName,
           date: e.date,
-          pin: e.pin
+          pin: e.pin,
+          id: e._id
         };
 
-
         this.courses.push(newCourse);
-        console.log(course);
+        //console.log(course);
       });
     });
   }

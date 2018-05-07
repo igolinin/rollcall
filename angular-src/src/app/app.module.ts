@@ -13,11 +13,24 @@ import { TeacherDashboardComponent } from './components/teacherComponents/teache
 import { TeacherAuthService } from './services/teacherServices/teacher-auth.service'
 import { TeacherCourseService } from './services/teacherServices/teacher-course.service';
 import { TeacherRollcallComponent } from './components/teacherComponents/teacher-rollcall/teacher-rollcall.component';
+<<<<<<< HEAD
 import { LectureStatsComponent } from './components/teacherComponents/lecture-stats/lecture-stats.component';
+=======
+import { StudentLoginComponent } from './components/studentComponents/student-login/student-login.component';
+import { StudentDashboardComponent } from './components/studentComponents/student-dashboard/student-dashboard.component';
+>>>>>>> 0898c84172b08e4fb629a0c2f766d60e7ad5c9ea
 
 
 const appRoutes: Routes = [
+
+  // home
   {path: '', component: HomeComponent},
+
+  // student routes
+  {path: 'student/login', component: StudentLoginComponent},
+  {path: 'student/dashboard', component: StudentDashboardComponent},
+
+  // teacher routes
   {path: 'teacher/login', component: TeacherLoginComponent},
   {path: 'teacher/dashboard', component: TeacherDashboardComponent},
   {path: 'teacher/rollcall', component: TeacherRollcallComponent}
@@ -31,7 +44,12 @@ const appRoutes: Routes = [
     TeacherLoginComponent,
     TeacherDashboardComponent,
     TeacherRollcallComponent,
+<<<<<<< HEAD
     LectureStatsComponent,
+=======
+    StudentLoginComponent,
+    StudentDashboardComponent,
+>>>>>>> 0898c84172b08e4fb629a0c2f766d60e7ad5c9ea
 
   ],
   imports: [
