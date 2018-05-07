@@ -24,14 +24,18 @@
                 <h3><span class="fa fa-user"></span> <%= user %></h3>
 
                 
-                <% lectures.forEach(function(i){ %>
-
-                    <div class='jumbotron">
-                       <div><h3><%= i.courseName %></h3><%= i.date %></div>
-                        <h3>true<h3>
-                    </div>
-    
-                <%  }) %>
+                
+                <div>
+                    <% for(var i=0; i<lectures.length; i++) { %>
+                        <p style="color:<%=  lectures[i].pin%>">
+                            <%= lectures[i].courseName %><br>
+                                <%= lectures[i].date %><br>
+                                <%=  lectures[i].pin%><br>
+                                
+                            
+                        </p>
+                    <% } %>
+                 </div>
     
                
 

@@ -27,17 +27,47 @@ router.get('/checkin'/* , isLoggedIn */, function(req, res) {
 //LECTURES================================================================================================================
 router.get('/lectures'/* , isLoggedIn */, function(req, res) {
     var newLecture = new Lecture();
+    var user='5ae3217b099468229c6081e7';
     var lectures;
-    newLecture.findByStudent('5ae3217b099468229c6081e7' ,(err,result)=>{
-        if(err)console.log(err);
+    var options = {
+        weekday: "short",
+        year: "numeric",
+        month: "2-digit",
+        day: "numeric",
+    };
+    
+    Lecture.find({'students.student':{$eq:user}}, (err,result)=>{
+        if(err)console.log(err)
         else {
-            console.log(result);
+            lectures=result.slice();
+            
+            for(let i=0;i<lectures.length;i++){
+                
+                for(let j=0;j<lectures[i].students.length;j++){
+                    
+                    if(lectures[i].students[j].student==user&&lectures[i].students[j].present==true)
+                        {
+                            lectures[i].date=lectures[i].date.toLocaleString('da',options);
+                            console.log(lectures[i].date)
+                            lectures[i].pin='green';break;
+                                                   
+                        }
+                    else {
+                        lectures[i].pin='red';
+                        
+                    }
+                }
+            }
             res.render('./lectures.ejs',{
                 
-                lectures: result,
+                lectures: lectures,
+
                 user : "user"
-            })}
+            })
+                
+        }
     });
+    
     
 });
 module.exports = router;
