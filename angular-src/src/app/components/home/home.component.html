@@ -1,37 +1,26 @@
-<<<<<<< HEAD
 <body>
-<div class="container-fluid" >
+<div class="container-fluid nopadding" >
   <div class="row" style="height:100vh">
-  <div class="col-md-6">
+  <div class="col-md-6 nopadding">
     <img src="/assets/teacher.jpg" alt="Avatar" >
     <div class="middle-container">
     <div class="middle">
     <h2>Teacher</h2>
     <p>Login as a teacher and perform a roll call</p>
-    <button type="button" class="btn btn-success">Teacher login</button>
+    <button type="button" class="btn btn-success" [routerLink]="['/teacher/login']">Teacher login</button>
   </div>
   </div>
 </div>
-  <div class="col-md-6">
+  <div class="col-md-6 nopadding">
     <img src="/assets/student.jpg" alt="Avatar" >
     <div class="middle-container">
     <div class="middle">
     <h2>Student</h2>
     <p>Login as a student and checkin</p>
-    <button type="button" class="btn btn-success">Student login</button>
+    <button type="button" class="btn btn-success" [routerLink]="['/']">Student login</button>
 </div>
 </div>
 </div>
 </div>
 </div>
 </body>
-=======
-<div class="jumbotron text-center">
-  <h1>Rock and Rollcall!</h1>
-  <p class="lead">Welcome to our rollcall application </p>
-  <div>
-    <a class="btn btn-primary" [routerLink]="['/teacher/login']"> Login as teacher</a>
-    <a class="btn btn-primary" [routerLink]="['/']">Login as student</a>
-  </div>
-</div>
->>>>>>> d2abeed22db45525be639389ae94097f5d46e0a8

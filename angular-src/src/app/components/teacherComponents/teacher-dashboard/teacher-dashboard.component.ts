@@ -34,9 +34,9 @@ export class TeacherDashboardComponent implements OnInit {
         };
 
 
-        this.courses.push(newCourse));
+        this.courses.push(newCourse);
         console.log(course);
-      }
+      });
     });
   }
 
