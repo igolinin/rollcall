@@ -11,8 +11,6 @@ export class TeacherDashboardComponent implements OnInit {
 
   courses = [];
 
-
-
   startRollcall() {
     this.router.navigate(['teacher/rollcall']);
   }
@@ -26,13 +24,11 @@ export class TeacherDashboardComponent implements OnInit {
     this.courseService.getTeacherCourses().subscribe(course => {
       course.forEach(e => {
 
-
         let newCourse = {
           name: e.courseName,
           date: e.date,
           pin: e.pin
         };
-
 
         this.courses.push(newCourse));
         console.log(course);
