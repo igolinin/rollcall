@@ -55,8 +55,8 @@ router.post('/genpin', (req, res)=>{
       console.log(result);
       newLecture.findByID('5aedbde5270fe506683620a7',(err,result1)=>{
         if(err)console.log(err)
-        else
-        {let pin=result1.pin;
+        else {
+          let pin=result1.pin;
           let time=result1.pin_time;
           console.log(result1);
           res.json({success:true, pin:pin, time:time});}
@@ -80,12 +80,12 @@ router.post('/genpin', (req, res)=>{
     newLecture =new Lecture;
     let students=[];
     newLecture.findByID(id, (err, result)=>{
-      if(err)console.log(err);
-      else{
+      if(err) console.log(err);
+      else {
         console.log(result.students.length);
-        for(let i=0;i<result.students.length;i++){
+        for (let i=0; i < result.students.length; i++){
           Student.getStudentById(result.students[i].student, (err, result1)=>{
-            if(err)console.log(err);
+            if(err) console.log(err);
             else {
               students.push(result1);
               //console.log(students+'kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk');
