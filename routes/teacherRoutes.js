@@ -44,7 +44,7 @@ router.post('/teacherAuthenticate', (req, res, next) => {
       }
     });
 
-router.post('/getpin', (req, res)=>{
+router.post('/genpin', (req, res)=>{
   newLecture = new Lecture();
 
   newLecture.genPin('5aedbde5270fe506683620a7', (err,result)=>{

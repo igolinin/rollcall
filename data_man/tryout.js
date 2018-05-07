@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 //const bodyParser = require('body-parser');
 const cors = require('cors');
 const config = require('../config/database');
-const Lecture = require('../models/lectures');
+var Lecture = require('../models/lectures');
 const Schema = mongoose.Schema;
 
 
@@ -16,6 +16,9 @@ mongoose.connection.on('connected',()=>{
 mongoose.Promise = global.Promise;
 
 newLecture = new Lecture();
+
+newLecture.LecturesWithPresense('5ae3217b099468229c6081e9');
+
 
 
 
@@ -59,7 +62,7 @@ newLecture = new Lecture();
     else console.log(result.toString());
 }).populate('students'); */ 
 
-var newLecture = new Lecture();
+/* var newLecture = new Lecture();
 newLecture.courseName = "Development of the large systems";
 var date = new Date("2018-05-9");
 date.setDate(date.getDate()+35);
@@ -85,4 +88,4 @@ newLecture.students = [{student:"5ae3217b099468229c6081e7",present:false},
 newLecture.addLecture(newLecture,(err,lecture)=>{
     if(err)console.log(err);
     else console.log('success');
-})
+}) */

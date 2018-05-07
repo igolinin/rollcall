@@ -29,7 +29,8 @@ const appRoutes: Routes = [
     HomeComponent,
     TeacherLoginComponent,
     TeacherDashboardComponent,
-    TeacherRollcallComponent
+    TeacherRollcallComponent,
+
   ],
   imports: [
     BrowserModule,

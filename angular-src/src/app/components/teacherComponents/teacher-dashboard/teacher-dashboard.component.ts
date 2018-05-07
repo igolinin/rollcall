@@ -32,7 +32,7 @@ export class TeacherDashboardComponent implements OnInit {
 
         this.courses.push(newCourse));
         console.log(course);
-      }
+      });
     });
   }
 
