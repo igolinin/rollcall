@@ -30,7 +30,7 @@ LectureSchema.methods.findPresense = function(lecture_id, student_id, callback){
 
 }
 LectureSchema.methods.findByID=function(lecture_id, callback){
-    Lecture.findOne({_id:{$eq:lecture_id}}, callback);
+    Lecture.findOne({_id:{$eq:lecture_id}}, callback).populate('student', 'Studentname');
 }
 LectureSchema.methods.checkIn = function(lecture_id, student_id, callback){
     Lecture.update({_id:{$eq:lecture_id}, 'students.student':{$in:student_id}},{ $set: { 'student.$.present': 'true' }},callback);

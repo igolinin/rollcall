@@ -1,9 +1,11 @@
+'use strict';
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const Lecture = require('../models/lectures');
+const Student = require('../models/student')
 
 
 // Authenticate
@@ -46,8 +48,8 @@ router.post('/teacherAuthenticate', (req, res, next) => {
 
 router.post('/genpin', (req, res)=>{
   newLecture = new Lecture();
-
-  newLecture.genPin('5aedbde5270fe506683620a7', (err,result)=>{
+  let lecture_id='5aedbde5270fe506683620a7';
+  newLecture.genPin(lecture_id, (err,result)=>{
 
     if(err)res.json({success:false})
     else {
@@ -74,7 +76,37 @@ router.get('/dayslectures', (req, res)=>{
   })
 
 })
-
+router.post('/getstats/:id', (req,res)=>{
+  var id = req.params.id;
+  newLecture =new Lecture;
+  let students=[];
+  newLecture.findByID(id, (err, result)=>{
+    if(err)console.log(err);
+    else{
+      console.log(result.students.length);
+      for(let i=0;i<result.students.length;i++){
+        Student.getStudentById(result.students[i].student, (err, result1)=>{
+          if(err)console.log(err);
+          else {students.push(result1);
+                //console.log(students+'kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk');
+              }
+        })
+      }
+      console.log(this.students)
+      res.json(students);
+    }
+  })
+  })
+  /* router.post('/getstats/:id', (req,res)=>{
+    var id = req.params.id;
+    newLecture =new Lecture;
+    newLecture.findByID(id, (err, result)=>{
+      if(err)console.log(err);
+      else
+        res.json(result);
+      
+    })
+    }) */
 
 
 module.exports = router;

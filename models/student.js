@@ -21,7 +21,7 @@ const StudentsSchema = mongoose.Schema({
 const Student = module.exports = mongoose.model('Students', StudentsSchema);
 
 // Methods
-getStudentById = (id, callback) => {
+module.exports.getStudentById = (id, callback) => {
   Student.findById(id, callback);
 }
 
