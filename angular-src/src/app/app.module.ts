@@ -13,6 +13,7 @@ import { TeacherDashboardComponent } from './components/teacherComponents/teache
 import { TeacherAuthService } from './services/teacherServices/teacher-auth.service'
 import { TeacherCourseService } from './services/teacherServices/teacher-course.service';
 import { TeacherRollcallComponent } from './components/teacherComponents/teacher-rollcall/teacher-rollcall.component';
+import { LectureStatsComponent } from './components/teacherComponents/lecture-stats/lecture-stats.component';
 
 
 const appRoutes: Routes = [
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
     TeacherLoginComponent,
     TeacherDashboardComponent,
     TeacherRollcallComponent,
+    LectureStatsComponent,
 
   ],
   imports: [
