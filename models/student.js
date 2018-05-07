@@ -3,8 +3,8 @@ const bcrypt = require('bcryptjs');
 const config = require('../config/database');
 
 // Student Schema
-const StudentSchema = mongoose.Schema({
-  name: {
+const StudentsSchema = mongoose.Schema({
+  Studentname: {
     type: String,
     required: true
   },
@@ -15,26 +15,10 @@ const StudentSchema = mongoose.Schema({
   password: {
     type: String,
     required: true
-  },
-  phonenumber: {
-    type: String,
-    required: false
-  },
-  keaMail: {
-    type: String,
-    required: false
-  },
-  course: {
-    type: String,
-    required: true
-  },
-  group: {
-    type: String,
-    required: true
   }
 });
 
-const Student = module.exports = mongoose.model('Student', StudentSchema);
+const Student = module.exports = mongoose.model('Students', StudentsSchema);
 
 // Methods
 getStudentById = (id, callback) => {
