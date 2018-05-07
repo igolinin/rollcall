@@ -7,7 +7,6 @@ const config = require('../config/database');
 const Lecture = require('../models/lectures');
 const Student = require('../models/student')
 
-
 // Authenticate
 router.post('/teacherAuthenticate', (req, res, next) => {
 
@@ -16,35 +15,35 @@ router.post('/teacherAuthenticate', (req, res, next) => {
 
   /*
   User.getUserByUsername(username, (err, user) => {
-    if(err) throw err;
-    if(!user) {
-      return res.json({success: false, msg: 'User not found'});
+  if(err) throw err;
+  if(!user) {
+  return res.json({success: false, msg: 'User not found'});
+}
+
+User.comparePassword(password, user.password, (err, isMatch) => {
+if(err) throw err;
+if(isMatch) {
+*/
+
+const token = jwt.sign({data: "user"}, config.secret, {
+  expiresIn: 7200 // 2 hours
+});
+
+if(username == 'teacher' && password == 'password') {
+  res.json({
+    success: true,
+    token: 'JWT ' + token,
+    user: {
+      user: 'admin',
+      //  id: user._id,
+      //  email: user.email,
+      username: username
     }
-
-    User.comparePassword(password, user.password, (err, isMatch) => {
-      if(err) throw err;
-      if(isMatch) {
-  */
-
-        const token = jwt.sign({data: "user"}, config.secret, {
-          expiresIn: 7200 // 2 hours
-        });
-
-        if(username == 'teacher' && password == 'password') {
-        res.json({
-          success: true,
-          token: 'JWT ' + token,
-          user: {
-            user: 'admin',
-          //  id: user._id,
-          //  email: user.email,
-            username: username
-          }
-        });
-      } else {
-        return res.json({success: false, msg: 'Wrong password'});
-      }
-    });
+  });
+} else {
+  return res.json({success: false, msg: 'Wrong password'});
+}
+});
 
 router.post('/genpin', (req, res)=>{
   newLecture = new Lecture();
@@ -61,52 +60,54 @@ router.post('/genpin', (req, res)=>{
           let time=result1.pin_time;
           console.log(result1);
           res.json({success:true, pin:pin, time:time});}
-      })
-    };
-  });
-});
-
-router.get('/dayslectures', (req, res)=>{
-  newLecture = new Lecture();
-  newLecture.findByDate('2018-05-9',(err,result)=>{
-    if(err)console.log(err)
-    else{
-      res.json(result);
-    }
-  })
-
-})
-router.post('/getstats/:id', (req,res)=>{
-  var id = req.params.id;
-  newLecture =new Lecture;
-  let students=[];
-  newLecture.findByID(id, (err, result)=>{
-    if(err)console.log(err);
-    else{
-      console.log(result.students.length);
-      for(let i=0;i<result.students.length;i++){
-        Student.getStudentById(result.students[i].student, (err, result1)=>{
-          if(err)console.log(err);
-          else {students.push(result1);
-                //console.log(students+'kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk');
-              }
         })
+      };
+    });
+  });
+
+  router.get('/dayslectures', (req, res)=>{
+    newLecture = new Lecture();
+    newLecture.findByDate('2018-05-9',(err,result)=>{
+      if(err)console.log(err)
+      else{
+        res.json(result);
       }
-      console.log(this.students)
-      res.json(students);
-    }
+    })
   })
-  })
-  /* router.post('/getstats/:id', (req,res)=>{
+
+  router.post('/getstats/:id', (req,res)=>{
     var id = req.params.id;
     newLecture =new Lecture;
+    let students=[];
     newLecture.findByID(id, (err, result)=>{
       if(err)console.log(err);
-      else
-        res.json(result);
-      
+      else{
+        console.log(result.students.length);
+        for(let i=0;i<result.students.length;i++){
+          Student.getStudentById(result.students[i].student, (err, result1)=>{
+            if(err)console.log(err);
+            else {
+              students.push(result1);
+              //console.log(students+'kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk');
+            }
+          })
+        }
+        console.log(this.students)
+        res.json(students);
+      }
     })
-    }) */
+  })
 
+  /*
+  router.post('/getstats/:id', (req,res)=>{
+  var id = req.params.id;
+  newLecture =new Lecture;
+  newLecture.findByID(id, (err, result)=>{
+  if(err)console.log(err);
+  else
+  res.json(result);
+})
+})
+*/
 
 module.exports = router;
