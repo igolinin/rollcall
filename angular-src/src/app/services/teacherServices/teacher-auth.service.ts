@@ -18,7 +18,7 @@ export class TeacherAuthService {
     .map(res => res.json());
   }
 
-  authenticateStudent(user) {
+  authenticateStudent(user  ) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post('http://localhost:3000/student/studentAuthenticate', user, {headers: headers})
