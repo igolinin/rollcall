@@ -1,3 +1,5 @@
+import { HttpClientModule } from '@angular/common/http';
+import { LectureStatsService } from './services/teacherServices/lecture-stats.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -31,7 +33,8 @@ const appRoutes: Routes = [
   // teacher routes
   {path: 'teacher/login', component: TeacherLoginComponent},
   {path: 'teacher/dashboard', component: TeacherDashboardComponent},
-  {path: 'teacher/rollcall', component: TeacherRollcallComponent}
+  {path: 'teacher/rollcall', component: TeacherRollcallComponent},
+  {path: 'teacher/stats', component: LectureStatsComponent}
 
 ]
 
@@ -52,9 +55,9 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule.forRoot(),
-    HttpModule
+    HttpModule, HttpClientModule
   ],
-  providers: [TeacherAuthService, TeacherCourseService],
+  providers: [TeacherAuthService, TeacherCourseService, LectureStatsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

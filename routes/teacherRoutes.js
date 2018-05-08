@@ -75,7 +75,7 @@ router.post('/genpin', (req, res)=>{
     })
   })
 
-router.post('/getstats/:id',(req,res)=>{
+router.get('/getstats/:id',(req,res)=>{
   var id = req.params.id
   Lecture.findOne({_id:id}).populate({path:'students.student',model:'Students', select:'Studentname email'}).exec().then((lecture)=>{
       console.log(lecture.students)
