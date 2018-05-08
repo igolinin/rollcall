@@ -19,6 +19,7 @@ import { LectureStatsComponent } from './components/teacherComponents/lecture-st
 
 import { StudentLoginComponent } from './components/studentComponents/student-login/student-login.component';
 import { StudentDashboardComponent } from './components/studentComponents/student-dashboard/student-dashboard.component';
+import { AuthGuard } from './guards/auth.guard';
 
 
 const appRoutes: Routes = [
@@ -28,13 +29,18 @@ const appRoutes: Routes = [
 
   // student routes
   {path: 'student/login', component: StudentLoginComponent},
-  {path: 'student/dashboard', component: StudentDashboardComponent},
+  {path: 'student/dashboard', component: StudentDashboardComponent, canActivate:[AuthGuard]},
 
   // teacher routes
   {path: 'teacher/login', component: TeacherLoginComponent},
+<<<<<<< HEAD
   {path: 'teacher/dashboard', component: TeacherDashboardComponent},
   {path: 'teacher/rollcall', component: TeacherRollcallComponent},
   {path: 'teacher/stats', component: LectureStatsComponent}
+=======
+  {path: 'teacher/dashboard', component: TeacherDashboardComponent, canActivate:[AuthGuard]},
+  {path: 'teacher/rollcall', component: TeacherRollcallComponent, canActivate:[AuthGuard]}
+>>>>>>> 8ed7cc92065ee3c237c7550a702f12437d4e1ecb
 
 ]
 
