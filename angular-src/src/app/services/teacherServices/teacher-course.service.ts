@@ -27,21 +27,21 @@ export class TeacherCourseService {
     return this.courseInfo;
   }
 
-  getStudentCourse() {
+  getStudentCourse(student_id) {
     let headers = new Headers();
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:3000/student/daysLecture',{headers: headers})
+    return this.http.post('http://localhost:3000/student/daysLecture', student_id ,{headers: headers})
       .map(res => res.json());
   }
 
-  registerAttendance() {
+  registerAttendance(data) {
     let headers = new Headers();
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:3000/student/checkin',{headers: headers})
+    return this.http.post('http://localhost:3000/student/checkin', data, {headers: headers})
       .map(res => res.json());
   }
 

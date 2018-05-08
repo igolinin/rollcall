@@ -29,7 +29,7 @@ const appRoutes: Routes = [
 
   // student routes
   {path: 'student/login', component: StudentLoginComponent},
-  {path: 'student/dashboard', component: StudentDashboardComponent, canActivate:[AuthGuard]},
+  {path: 'student/dashboard', component: StudentDashboardComponent, /*canActivate:[AuthGuard] */},
 
   // teacher routes
   {path: 'teacher/login', component: TeacherLoginComponent},

@@ -15,15 +15,23 @@ export class StudentDashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.courseService.getStudentCourse().subscribe(data => {
-      this.myCourse = data;
-    })
+
+    let studentInfo = {}
+
+    this.courseService.getStudentCourse({student_id : "5ae3217b099468229c6081f0"}).subscribe(data => {
+      this.myCourse = data[0];
+      console.log(this.myCourse);
+    });
+
   }
 
-  onLoginSubmit(){
-    this.courseService.registerAttendance().subscribe(data => {
-      console.log(data);
-    })
+  testSmt() {
+    this.courseService.registerAttendance({lecture_id : this.myCourse._id, student_id : "5ae3217b099468229c6081f0"}).subscribe(data => {
+      if(data.success == true) {
+        console.log("You are now registered for " + this.myCourse.courseName);
+      } else {
+        console.log("Failed to registered for " + this.myCourse.courseName);
+      }
+    }
   }
-
 }

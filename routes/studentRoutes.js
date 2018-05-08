@@ -64,10 +64,11 @@ router.post('/checkin/lecture/:lcid/student/:stid', (req, res)=>{
 
 router.post('/checkin', (req, res)=>{
   var lecture_id = req.body.lectureId;
-  var student_id = req.param.studentId
+  var student_id = req.body.studentId
   Lecture.update({_id:{$eq:lecture_id}, 'students.student':{$in:student_id}},{ $set: { 'student.$.present': 'true' }}).exec()
   .then(()=>{res.json({success:true})})
 });
+
 router.post('/dayslecture', (req,res)=>{
     var student_id = req.body.student_id;
     var date = '2018-04-19';
@@ -75,10 +76,10 @@ router.post('/dayslecture', (req,res)=>{
     newLecture.findByStudentAndDate(student_id,date,(err,result)=>{
       if(err)console.log(err);
       else{ console.log(result);
-        res.json(result);  
+        res.json(result);
         }
-     }) 
-    
+     })
+
 });
 
 /* json for testing
