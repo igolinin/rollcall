@@ -52,10 +52,21 @@ router.post('/studentAuthenticate', (req, res, next) => {
   }
 });
 });
+
+/*
 router.post('/checkin/lecture/:lcid/student/:stid', (req, res)=>{
   var lecture_id = req.param.lcid;
   var student_id = req.param.stid
   Lecture.update({_id:{$eq:lecture_id}, 'students.student':{$in:student_id}},{ $set: { 'student.$.present': 'true' }}).exec()
   .then(()=>{res.json({success:true})})
-})
+});
+*/
+
+router.post('/checkin', (req, res)=>{
+  var lecture_id = req.body.lectureId;
+  var student_id = req.param.studentId
+  Lecture.update({_id:{$eq:lecture_id}, 'students.student':{$in:student_id}},{ $set: { 'student.$.present': 'true' }}).exec()
+  .then(()=>{res.json({success:true})})
+});
+
 module.exports = router;

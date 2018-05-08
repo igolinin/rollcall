@@ -27,6 +27,10 @@ export class TeacherCourseService {
     return this.courseInfo;
   }
 
+  registerAttendance() {
+    
+  }
+
   generatePin(courseID) {
     let headers = new Headers();
     this.loadToken();
