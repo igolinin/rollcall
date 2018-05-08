@@ -68,5 +68,14 @@ router.post('/checkin', (req, res)=>{
   Lecture.update({_id:{$eq:lecture_id}, 'students.student':{$in:student_id}},{ $set: { 'student.$.present': 'true' }}).exec()
   .then(()=>{res.json({success:true})})
 });
+router.post('/dayslecture', (req,res)=>{
+    var student_id = req.body.student_id;
+    var date = '2018-05-09';
+    let newLecture = new Lecture();
+    newLecture.findByStudentAndDate(student_id,date,(err,result)=>{
+      if(err)console.log(err);
+      else res.json(result);    
+    
+})
 
 module.exports = router;
