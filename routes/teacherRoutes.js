@@ -92,11 +92,9 @@ router.post('/genpin', (req, res)=>{
               if(i==result.students.length-1)
               res.json(students);
 
-              //console.log(students+'kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk');
             }
           })
         }
-        console.log(this.students)
       }
     })
   })
