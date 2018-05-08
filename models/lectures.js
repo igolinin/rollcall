@@ -20,7 +20,7 @@ LectureSchema.methods.findByStudent = function(id, callback){
     Lecture.find({'students.student':{$eq:id}},callback).populate('students');
 };
 LectureSchema.methods.findByStudentAndDate = function(id, date, callback){
-    Lecture.find({'students.student':{$eq:id}, 'date':{$eq:date}},callback);
+    Lecture.find({'students.student':{$eq:id}, 'date':{$eq:date}},'_id courseName',callback);
 };
 LectureSchema.methods.findByDate = function( date, callback){
     Lecture.find({date:{$eq:date}},callback);

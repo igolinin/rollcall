@@ -70,12 +70,20 @@ router.post('/checkin', (req, res)=>{
 });
 router.post('/dayslecture', (req,res)=>{
     var student_id = req.body.student_id;
-    var date = '2018-05-09';
+    var date = '2018-04-19';
     let newLecture = new Lecture();
     newLecture.findByStudentAndDate(student_id,date,(err,result)=>{
       if(err)console.log(err);
-      else res.json(result);    
+      else{ console.log(result);
+        res.json(result);  
+        }
+     }) 
     
-})
+});
+
+/* json for testing
+{
+	student_id:'5ae3217b099468229c6081e7'
+} */
 
 module.exports = router;
