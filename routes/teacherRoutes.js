@@ -46,7 +46,7 @@ if(username == 'teacher' && password == 'password') {
 });
 
 router.post('/genpin', (req, res)=>{
-  newLecture = new Lecture();
+  let newLecture = new Lecture();
   let lecture_id='5aedbde5270fe506683620a7';
   newLecture.genPin(lecture_id, (err,result)=>{
 
@@ -66,7 +66,7 @@ router.post('/genpin', (req, res)=>{
   });
 
   router.get('/dayslectures', (req, res)=>{
-    newLecture = new Lecture();
+    let newLecture = new Lecture();
     newLecture.findByDate('2018-05-9',(err,result)=>{
       if(err)console.log(err)
       else{
@@ -78,7 +78,7 @@ router.post('/genpin', (req, res)=>{
 
   router.post('/getstats/:id', (req,res)=>{
     var id = req.params.id;
-    newLecture =new Lecture;
+    let newLecture =new Lecture;
     let students=[];
     newLecture.findByID(id, (err, result)=>{
       if(err) console.log(err);
