@@ -35,7 +35,7 @@ const appRoutes: Routes = [
   {path: 'teacher/login', component: TeacherLoginComponent},
   {path: 'teacher/dashboard', component: TeacherDashboardComponent},
   {path: 'teacher/rollcall', component: TeacherRollcallComponent},
-  {path: 'teacher/stats', component: LectureStatsComponent}
+  {path: 'teacher/stats', component: LectureStatsComponent},
   {path: 'teacher/dashboard', component: TeacherDashboardComponent, canActivate:[AuthGuard]},
   {path: 'teacher/rollcall', component: TeacherRollcallComponent, canActivate:[AuthGuard]}
 

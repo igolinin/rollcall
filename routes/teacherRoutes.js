@@ -67,7 +67,7 @@ router.post('/genpin', (req, res)=>{
 
   router.get('/dayslectures', (req, res)=>{
     let newLecture = new Lecture();
-    newLecture.findByDate('2018-05-9',(err,result)=>{
+    newLecture.findByDate('2018-05-10',(err,result)=>{
       if(err)console.log(err)
       else{
         res.json(result);
