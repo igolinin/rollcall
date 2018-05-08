@@ -27,8 +27,22 @@ export class TeacherCourseService {
     return this.courseInfo;
   }
 
+  getStudentCourse() {
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('http://localhost:3000/student/daysLecture',{headers: headers})
+      .map(res => res.json());
+  }
+
   registerAttendance() {
-    
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('http://localhost:3000/student/checkin',{headers: headers})
+      .map(res => res.json());
   }
 
   generatePin(courseID) {
