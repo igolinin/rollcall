@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
+mongoose.Promise = global.Promise;
 var LectureSchema =  mongoose.Schema({
     courseName:{type: String},
     date:{type: Date},

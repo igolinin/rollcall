@@ -1,4 +1,4 @@
-'use strict';
+
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
@@ -75,6 +75,7 @@ router.post('/genpin', (req, res)=>{
     })
   })
 
+
   router.post('/getstats/:id', (req,res)=>{
     var id = req.params.id;
     newLecture =new Lecture;
@@ -88,12 +89,14 @@ router.post('/genpin', (req, res)=>{
             if(err) console.log(err);
             else {
               students.push(result1);
+              if(i==result.students.length-1)
+              res.json(students);
+
               //console.log(students+'kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk');
             }
           })
         }
         console.log(this.students)
-        res.json(students);
       }
     })
   })
