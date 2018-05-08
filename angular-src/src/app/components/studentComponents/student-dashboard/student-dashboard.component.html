@@ -1,10 +1,4 @@
 <p> Welcome to your dashboard! </p>
 
-<form (submit)="onLoginSubmit()">
-  <div class="form-group">
-    <label>Insert pincode</label>
-    <input type="text" class="form-control" [(ngModel)]="pincode" name="pincode">
-  </div>
-
-  <input type="submit" class="btn btn-primary" value="Register">
-</form>
+    <label> Insert pincode to register attendance for <b> {{myCourse.courseName}} </b> </label>
+    <button type="button" class="btn btn-light " style="cursor: pointer;" (click)="testSmt()"> register attendance </button>
