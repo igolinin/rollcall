@@ -64,9 +64,15 @@ router.post('/checkin/lecture/:lcid/student/:stid', (req, res)=>{
 
 router.post('/checkin', (req, res)=>{
   var lecture_id = req.body.lectureId;
-  var student_id = req.body.studentId
-  Lecture.update({_id:{$eq:lecture_id}, 'students.student':{$in:student_id}},{ $set: { 'student.$.present': 'true' }}).exec()
+  var student_id = req.body.studentId;
+  var pin = req.body.pin;
+  Lecture.findOne({_id:{$eq:lecture_id}}).exec().then((result)=>{
+    if(result.pin==pin){
+      Lecture.update({_id:{$eq:lecture_id}, 'students.student':{$in:student_id}},{ $set: { 'student.$.present': 'true' }}).exec()
   .then(()=>{res.json({success:true})})
+    }
+  })
+  
 });
 
 router.post('/dayslecture', (req,res)=>{
