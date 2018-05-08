@@ -75,8 +75,14 @@ router.post('/genpin', (req, res)=>{
     })
   })
 
-
-  router.post('/getstats/:id', (req,res)=>{
+router.post('/getstats/:id',(req,res)=>{
+  var id = req.params.id
+  Lecture.findOne({_id:id}).populate({path:'students.student',model:'Students', select:'Studentname email'}).exec().then((lecture)=>{
+      console.log(lecture.students)
+      res.json(lecture.students);
+  })
+})
+ /*  router.post('/getstats/:id', (req,res)=>{
     var id = req.params.id;
     let newLecture =new Lecture;
     let students=[];
@@ -97,7 +103,7 @@ router.post('/genpin', (req, res)=>{
         }
       }
     })
-  })
+  }) */
 
   /*
   router.post('/getstats/:id', (req,res)=>{

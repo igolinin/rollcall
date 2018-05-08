@@ -14,6 +14,7 @@ import { TeacherAuthService } from './services/teacherServices/teacher-auth.serv
 import { TeacherCourseService } from './services/teacherServices/teacher-course.service';
 import { TeacherRollcallComponent } from './components/teacherComponents/teacher-rollcall/teacher-rollcall.component';
 import { LectureStatsComponent } from './components/teacherComponents/lecture-stats/lecture-stats.component';
+
 import { StudentLoginComponent } from './components/studentComponents/student-login/student-login.component';
 import { StudentDashboardComponent } from './components/studentComponents/student-dashboard/student-dashboard.component';
 
