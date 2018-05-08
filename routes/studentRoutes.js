@@ -4,6 +4,8 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const Student = require('../models/student');
+const Lecture = require('../models/lectures')
+
 
 // Authenticate
 router.post('/studentAuthenticate', (req, res, next) => {
@@ -50,5 +52,10 @@ router.post('/studentAuthenticate', (req, res, next) => {
   }
 });
 });
-
+router.post('/checkin/lecture/:lcid/student/:stid', (req, res)=>{
+  var lecture_id = req.param.lcid;
+  var student_id = req.param.stid
+  Lecture.update({_id:{$eq:lecture_id}, 'students.student':{$in:student_id}},{ $set: { 'student.$.present': 'true' }}).exec()
+  .then(()=>{res.json({success:true})})
+})
 module.exports = router;
