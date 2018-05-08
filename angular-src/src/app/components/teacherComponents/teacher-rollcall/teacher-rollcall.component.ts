@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TeacherDashboardComponent } from "../teacher-dashboard/teacher-dashboard.component";
-import { TeacherCourseService } from '../../../services/teacherServices/teacher-course.service'
+import { TeacherCourseService } from '../../../services/teacherServices/teacher-course.service';
 
 @Component({
   selector: 'app-teacher-rollcall',

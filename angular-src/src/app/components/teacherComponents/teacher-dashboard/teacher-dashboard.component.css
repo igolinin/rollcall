@@ -1,0 +1,26 @@
+/* .nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+} */
+.container-fluid{
+  background-image: url('../../../../assets/school.jpeg');
+  background-size: cover;
+  opacity: 0.8;
+
+
+}
+/* ::ng-deep body {
+    background-image: url('../../../../assets/school.jpeg');
+} */
+::ng-deep .container-fluid {
+  padding: 0 !important;
+  margin: 0 !important;
+
+}
+h1{
+  color:white;
+  opacity: 1;
+}
+.container{
+  opacity:1;
+}

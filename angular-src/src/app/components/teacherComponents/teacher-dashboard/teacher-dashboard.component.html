@@ -1,10 +1,20 @@
-<p>
-  Welcome to your dashboard
-</p>
+<div class="container-fluid" style="height:100vh">
+
+    <h1 style="text-align: center; padding-top:150px; ">
+      Welcome to your dashboard
+    </h1>
+
   <br>
+  <div class="container" style="width:500px; margin-top:75px;">
+
+  <ul class="list-group">
   <div *ngFor="let course of courses">
 
-      <p> {{ course.name }} </p>
-      <button (click)="startRollcall(course.id)"> Start a new rollcall! </button>
-
+      <li class="list-group-item list-group-item-action" style="text-align: center " > {{ course.name }} &nbsp;
+      <button type="button" class="btn btn-light " style="cursor: pointer;" (click)="startRollcall(course.id)"> Start a rollcall </button>
+      </li>
   </div>
+</ul>
+
+</div>
+</div>
