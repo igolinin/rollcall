@@ -74,7 +74,7 @@ router.post('/checkin', (req, res)=>{
     res.json({success:true})})
     }
   })
-  
+
 });
 
 router.post('/dayslecture', (req,res)=>{
