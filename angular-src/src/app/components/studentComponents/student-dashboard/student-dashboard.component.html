@@ -1,4 +1,15 @@
 <p> Welcome to your dashboard! </p>
 
     <label> Insert pincode to register attendance for <b> {{myCourse.courseName}} </b> </label>
-    <button type="button" class="btn btn-light " style="cursor: pointer;" (click)="testSmt()"> register attendance </button>
+    <!--<button type="button" class="btn btn-light " style="cursor: pointer;" (click)="testSmt()"> register attendance </button> -->
+
+    <form (submit)="testSmt()">
+
+      <div class="form-group row">
+        <div class="col-xs-4">
+          <input type="text" [(ngModel)]="pincode" name="pincode" class="form-control" >
+        </div>
+      </div>
+
+      <input type="submit" class="btn btn-primary btn-xs" value="Submit">
+    </form>
