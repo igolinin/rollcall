@@ -67,9 +67,11 @@ router.post('/checkin', (req, res)=>{
   var student_id = req.body.studentId;
   var pin = req.body.pin;
   Lecture.findOne({_id:{$eq:lecture_id}}).exec().then((result)=>{
+    console.log(result);
     if(result.pin==pin){
-      Lecture.update({_id:{$eq:lecture_id}, 'students.student':{$in:student_id}},{ $set: { 'student.$.present': 'true' }}).exec()
-  .then(()=>{res.json({success:true})})
+      Lecture.update({_id:{$eq:lecture_id}, 'students.student':{$in:student_id}},{ $set: { 'students.$.present': 'true' }}).exec()
+  .then((result1)=>{console.log(result1)
+    res.json({success:true})})
     }
   })
   
@@ -87,6 +89,17 @@ router.post('/dayslecture', (req,res)=>{
      })
 
 });
+router.get('/attendance/:id', (req, res)=>{
+  var student_id = req.param.id;
+  Lecture.find({'students.student':{$eq:student_id}}).exec()
+        .then((result)=>{console.log(result)}).then(
+        Lecture.find({'students.student':{$eq:student_id},'students.$.present':{$eq:true}}).exec().then((result1)=>{console.log(result1)}))
+        
+      })
+      
+
+      
+
 
 /* json for testing
 {

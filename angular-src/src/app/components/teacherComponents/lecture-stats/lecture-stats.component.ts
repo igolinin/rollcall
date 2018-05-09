@@ -4,7 +4,7 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-lecture-stats',
   template: `<div class='jumbotron'>
-   <div *ngFor="let student of students"><div [style.color]="student.present ? 'red' : 'green'">
+   <div *ngFor="let student of students"><div [style.color]="student.present ? 'green' : 'red'">
    {{student.student.email}}\t{{student.student.Studentname}}\t\t{{student.present}}
    </div></div>
 
